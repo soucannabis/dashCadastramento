@@ -44,7 +44,7 @@ io.on('connection', (socket) => {
 });
 
 // Atualizar os dados da API a cada x segundos
-const interval = 5000; // 5000 milissegundos = 5 segundos
+const interval = 60000; // 5000 milissegundos = 5 segundos
 setInterval(() => {
   fetchDataAndEmit();
 }, interval);
