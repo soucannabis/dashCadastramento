@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DashBoard SouCannabis</title>
+    <title>DashBoard Cadastramento</title>
+    <link rel="icon" type="image/x-icon" href="marijuana.png">
+
     <link
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -11,7 +13,7 @@
   </head>
   <body>
     <div class="container mt-5">
-      <h1>DashBoard SouCannabis</h1>
+      <h3>Lista de Cadastros SouCannabis</h3>
       <table class="table mt-4">
         <thead>
           <tr>
@@ -23,7 +25,6 @@
           </tr>
         </thead>
         <tbody id="data-body">
-          <!-- Aqui serão exibidos os dados da API -->
         </tbody>
       </table>
     </div>
@@ -107,7 +108,7 @@
               linkText = "Card";
             }
           }
-          console.log(item.rg_proof)
+
           if (status == "registered") {
             if (item.rg_proof) {
               status = "Aguardando Assinatura do Termo";
@@ -152,7 +153,6 @@
         });
       });
 
-      // Solicitando dados ao servidor quando a página é carregada
       socket.emit("getData");
     </script>
   </body>
