@@ -14,6 +14,7 @@
   <body>
     <div class="container mt-5">
       <h3>Lista de Cadastros SouCannabis</h3>
+      <input style="max-width:30%" type="text" id="searchInput" class="form-control mt-3" placeholder="Pesquisar...">
       <table class="table mt-4">
         <thead>
           <tr>
@@ -124,6 +125,10 @@
             }
           }
 
+          if (status == "proofs"){
+            status = "Gerou o termo mais não assinou";
+          }
+
           if (item.name_associate == null) {
             name = "[sem-nome]";
           }
@@ -152,6 +157,27 @@
           }
         });
       });
+
+           function filtrarTabela() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toUpperCase();
+        const rows = document.querySelectorAll("#data-body tr");
+
+        rows.forEach((row) => {
+          const cells = row.querySelectorAll("td");
+          let found = false;
+          cells.forEach((cell) => {
+            const textValue = cell.textContent || cell.innerText;
+            if (textValue.toUpperCase().indexOf(filter) > -1) {
+              found = true;
+            }
+          });
+          row.style.display = found ? "" : "none";
+        });
+      }
+
+      // Adicionando um ouvinte de evento à barra de pesquisa
+      document.getElementById("searchInput").addEventListener("keyup", filtrarTabela);
 
       socket.emit("getData");
     </script>

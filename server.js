@@ -18,7 +18,7 @@ app.use(express.static('public'));
 async function fetchDataAndEmit(socket) {
   try {
     // Consulta à API Sou Cannabis
-    const response = await axios.get('https://database.soucannabis.ong.br/items/Users?sort=-date_created&filter=[resposable_type][_neq]=patient&access_token=YeNqgljghf84ZD_5FiAPWvfBOGXZca5t');
+    const response = await axios.get('https://database.soucannabis.ong.br/items/Users?sort=-date_created&filter=[responsable_type][_neq]=patient&access_token=YeNqgljghf84ZD_5FiAPWvfBOGXZca5t');
 
     // Emitindo os dados para todos os clientes conectados
     io.emit('data', response.data);
